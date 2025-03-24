@@ -34,6 +34,7 @@ const Modal = ({ isOpen, onClose, children }) => {
     </div>
   );
 };
+
 const ModalFuncionarios = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
   
@@ -45,14 +46,31 @@ const ModalFuncionarios = ({ isOpen, onClose, children }) => {
         </div>
       </div>
     );
-  };
+};
+
+const ModalClientes = ({ isOpen, onClose, children }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay-clientes" onClick={onClose}>
+      <div className="modal-content-clientes" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close-clientes" onClick={onClose}>X</button>
+        {children}
+      </div>
+    </div>
+  );
+};
 
 function ActionsCard() {
   const [modalCadastro, setModalCadastro] = useState(false);
   const [modalFuncionarios, setModalFuncionarios] = useState(false);
+  const [modalClientes, setModalClientes] = useState(false);
 
   const openCadastro = () => setModalCadastro(true);
   const closeCadastro = () => setModalCadastro(false);
+
+  const openClientes = () => setModalClientes(true);
+  const closeClientes = () => setModalClientes(false)
 
   const openFuncionarios = () => setModalFuncionarios(true);
   const closeFuncionarios = () => setModalFuncionarios(false);
@@ -93,7 +111,7 @@ function ActionsCard() {
             <li><a>Mercadorias</a></li>
 
             <strong>Pessoas</strong>
-            <li><a>Clientes</a></li>
+            <li><a onClick={openClientes}>Clientes</a></li>
             <li>
               <a onClick={openFuncionarios}>Funcionários / Permissões</a>
             </li>
@@ -109,10 +127,15 @@ function ActionsCard() {
         </div>
       </Modal>
 
+      <ModalClientes isOpen={modalClientes} onClose={closeClientes}>
+        
+      </ModalClientes>
+
       {/* Modal de Funcionários / Permissões */}
         <ModalFuncionarios isOpen={modalFuncionarios} onClose={closeFuncionarios}>
             <FuncionariosForm />
         </ModalFuncionarios>
+
     </>
   );
 }

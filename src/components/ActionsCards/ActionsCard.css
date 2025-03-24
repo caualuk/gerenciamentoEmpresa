@@ -58,7 +58,7 @@
 }
 
 /* Modal de Funcionários */
-.modal-overlay-funcionarios {
+.modal-overlay-funcionarios, .modal-overlay-clientes {
   position: fixed;
   top: 0;
   left: 0;
@@ -70,7 +70,7 @@
   align-items: center;
 }
 
-.modal-content-funcionarios {
+.modal-content-funcionarios, .modal-content-clientes {
   background-color: #fff;
   padding: 30px;
   border-radius: 12px;
@@ -82,7 +82,7 @@
   max-height: 90vh; /* Limita a altura do modal */
 }
 
-.modal-close-funcionarios {
+.modal-close-funcionarios, .modal-close-clientes {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -93,9 +93,11 @@
   color: #666;
 }
 
-.modal-close-funcionarios:hover {
+.modal-close-funcionarios:hover, .modal-close-clientes:hover {
   color: #333;
 }
+
+
 
 /* Estilos para o conteúdo do modal */
 .modal-content h2 {
